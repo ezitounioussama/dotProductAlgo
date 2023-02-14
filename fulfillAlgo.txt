@@ -1,88 +1,60 @@
-ALGORITHM dot_product
-VAR
-v1, v2: ARRAY_OF INTEGER;
-n: INTEGER;
-ps: INTEGER;
-i: INTEGER;
+// PROC1 : DOT PRODUCT
+
+var V1 : ARRAY_OF INTEGER[]
+    V2 : ARRAY_OF INTEGER[]
+    i : INTEGER;
 BEGIN
-// Input vectors v1 and v2
-Write("Enter the number of elements in each vector: ");
-Read(n);
-Write("Enter elements of first vector: ");
-FOR i FROM 0 TO n-1 DO
-Read(v1[i]);
-END_FOR
-Write("Enter elements of second vector: ");
-FOR i FROM 0 TO n-1 DO
-Read(v2[i]);
-END_FOR
 
-// Calculate dot product
-ps := 0;
-FOR i FROM 0 TO n-1 DO
-ps := ps + (v1[i] * v2[i]);
-END_FOR
-Write("Dot product is: ");
-Write(ps);
-END
-Algorithm to check orthogonality:
+write('enter value of V1')
+write('enter value of V2 ')
 
-ALGORITHM check_orthogonality
-VAR
-v1, v2: ARRAY_OF INTEGER;
-n: INTEGER;
-ps: INTEGER;
-BEGIN
-// Input vectors v1 and v2
-Write("Enter the number of elements in each vector: ");
-Read(n);
-Write("Enter elements of first vector: ");
-FOR i FROM 0 TO n-1 DO
-Read(v1[i]);
-END_FOR
-Write("Enter elements of second vector: ");
-FOR i FROM 0 TO n-1 DO
-Read(v2[i]);
-END_FOR
+PROCEDURE dot_product (V1, V2, Var ps:INTEGER := 0)
+  FOR i = 0 TO n-1 DO
+    read(V1)
+  END FOR
 
-// Call dot_product procedure to calculate dot product
-dot_product(v1, v2, n, ps);
+  FOR i = 0 TO n-1 DO 
+    read(V2)
+  END FOR
 
-// Check orthogonality
-IF ps = 0 THEN
-Write("Vectors are orthogonal.");
-ELSE
-Write("Vectors are not orthogonal.");
-END_IF
+  FOR i = 0 TO n-1
+    ps = ps + (V1[i] * V2[i])
+  END FOR
+END PROCEDURE
 END
 
-Algorithm to check orthogonality using dot_product function:
 
-ALGORITHM check_orthogonality_function
-VAR
-v1, v2: ARRAY_OF INTEGER;
-n: INTEGER;
-ps: INTEGER;
+
+
+
+// PROC2 : ORTHOGONAL 
+
+var V1 : ARRAY_OF INTEGER[]
+    V2 : ARRAY_OF INTEGER[]
+    i,j,n: INTEGER;
+    orthogonal : Boolean
+     
 BEGIN
-// Input vectors v1 and v2
-Write("Enter the number of elements in each vector: ");
-Read(n);
-Write("Enter elements of first vector: ");
-FOR i FROM 0 TO n-1 DO
-Read(v1[i]);
-END_FOR
-Write("Enter elements of second vector: ");
-FOR i FROM 0 TO n-1 DO
-Read(v2[i]);
-END_FOR
 
-// Call dot_product function to calculate dot product
-ps := dot_product(v1, v2, n);
+write('enter value of V1')
+read(V1)
+write('enter value of V2 ')
+read(V2)
+write('enter number')
+read(n)
 
-// Check orthogonality
-IF ps = 0 THEN
-Write("Vectors are orthogonal.");
-ELSE
-Write("Vectors are not orthogonal.");
-END_IF
+PROCEDURE is_orthogonal (V1, V2, n)
+
+  SET orthogonal = TRUE
+    WHILE(i < length(n))
+      FOR j = 0 TO n-1
+          CALL dot_product (V1, V2, ps:INTEGER := 0)
+            IF ps ≠ 0
+              SET orthogonal = FALSE
+            END IF
+      END FOR
+      i++
+    END WHILE
+  RETURN orthogonal
+END PROCEDURE
 END

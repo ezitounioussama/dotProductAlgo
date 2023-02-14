@@ -2,17 +2,21 @@
 
 var V1 : ARRAY_OF INTEGER[]
     V2 : ARRAY_OF INTEGER[]
-    i : INTEGER;
+    i ,n: INTEGER;
 BEGIN
 
-write('enter value of V1')
-write('enter value of V2 ')
 
+
+
+write('enter number')
+read(n)
 PROCEDURE dot_product (V1, V2, Var ps:INTEGER := 0)
+
+write('enter value of V1')
   FOR i = 0 TO n-1 DO
     read(V1)
   END FOR
-
+write('enter value of V2')
   FOR i = 0 TO n-1 DO 
     read(V2)
   END FOR
@@ -20,7 +24,10 @@ PROCEDURE dot_product (V1, V2, Var ps:INTEGER := 0)
   FOR i = 0 TO n-1
     ps = ps + (V1[i] * V2[i])
   END FOR
+
 END PROCEDURE
+
+
 END
 
 
@@ -35,6 +42,7 @@ var V1 : ARRAY_OF INTEGER[]
     orthogonal : Boolean
      
 BEGIN
+
 
 write('enter value of V1')
 read(V1)
@@ -56,5 +64,8 @@ PROCEDURE is_orthogonal (V1, V2, n)
       i++
     END WHILE
   RETURN orthogonal
+
 END PROCEDURE
+
+
 END
